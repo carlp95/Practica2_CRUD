@@ -23,19 +23,28 @@
                         <th colspan="4" style="text-align: center"><h2>Listado de Estudiantes</h2></th>
                     </tr>
                     <tr>
-                        <th>Matrícula</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Teléfono</th>
+                        <th style="text-align: center">Matrícula</th>
+                        <th style="text-align: center">Nombre</th>
+                        <th style="text-align: center">Apellido</th>
+                        <th style="text-align: center">Teléfono</th>
+                        <th style="text-align: center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <#list estudiantes as estu>
                         <tr>
-                            <td>${estu.matricula?string["0"]}</td>
-                            <td>${estu.nombre}</td>
-                            <td>${estu.apellido}</td>
-                            <td>${estu.telefono}</td>
+                            <td style="text-align: center"><a href="/verEstudiante/${estu.matricula?string["0"]}">${estu.matricula?string["0"]}</a></td>
+                            <td style="text-align: center">${estu.nombre}</td>
+                            <td style="text-align: center">${estu.apellido}</td>
+                            <td style="text-align: center">${estu.telefono}</td>
+                            <td style="text-align: center">
+                                <div class="col-sm-3">
+                                    <a href="/editarEstudiante/${estu.matricula?string["0"]}"><button type="button" class="btn btn-primary" title="Actualizar Estudiante"><i class="fa fa-refresh"></i></button></a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="/borrarEstudiante/${estu.matricula?string["0"]}"><button type="button" class="btn btn-primary" title="Eliminar Estudiante"><i class="fa fa-trash"></i></button></a>
+                                </div>
+                            </td>
                         </tr>
                     </#list>
                 </tbody>
@@ -45,15 +54,6 @@
         <div class="row" >
             <div class="col-md-3">
                 <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-plus"> <strong>Crear Estudiante</strong></i></button></a>
-            </div>
-            <div class="col-md-3">
-                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-edit"> <strong>Editar Estudiante</strong></i></button></a>
-            </div>
-            <div class="col-md-3">
-                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-undo"> <strong>Actualizar Estudiante</strong></i></button></a>
-            </div>
-            <div class="col-md-3">
-                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-trash"> <strong>Eliminar Estudiante</strong></i></button></a>
             </div>
         </div>
     </#if>

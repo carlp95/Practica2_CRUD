@@ -31,7 +31,7 @@
                             <label for="telefono">Teléfono</label>
                             <input class="form-control" name="telefono" placeholder="8090000000" type="tel" maxlength="10">
                         </div>
-                        <button type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"> <strong>Guardar</strong></i></button>
                     </form>
                 </div>
             </div>

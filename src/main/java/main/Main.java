@@ -1,6 +1,6 @@
 package main;
 
-import clases.Estudiente;
+import clases.Estudiante;
 
 import freemarker.template.Configuration;
 
@@ -22,7 +22,7 @@ public class Main {
         configuration.setClassForTemplateLoading(Main.class, "/templates");
         FreeMarkerEngine freemarkerEngine = new FreeMarkerEngine(configuration);
 
-        ArrayList<Estudiente> listaEstudiantes = new ArrayList<>();
+        ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
 
         get("/",(request, response) -> {
            Map<String, Object> atributos = new HashMap<>();
@@ -44,11 +44,54 @@ public class Main {
             String apellido = request.queryParams("apellido");
             String telefono = request.queryParams("telefono");
             //Map<String, Object> atributos = new HashMap<>();
-            listaEstudiantes.add(new Estudiente(matricula,nombre,apellido,telefono));
+            listaEstudiantes.add(new Estudiante(matricula,nombre,apellido,telefono));
             //atributos.put("estudiantes",listaEstudiantes);
             response.redirect("/");
 
             return null;
+        },freemarkerEngine);
+
+        get("/editarEstudiante/:matricula",(request,response)->{
+            Map<String, Object> atributos = new HashMap<>();
+            atributos.put("titulo", "Editar Estudiante");
+            for(Estudiante es: listaEstudiantes){
+                if(es.getMatricula() == Integer.parseInt(request.params("matricula"))){
+                    atributos.put("estudiante",es);
+                }
+            }
+
+            return new ModelAndView(atributos,"editar.ftl");
+
+        }, freemarkerEngine);
+
+        post("/editarEstudiante/actualizar",(request,response) -> {
+            int matricula = Integer.parseInt(request.queryParams("matricula"));
+            String nombre = request.queryParams("nombre");
+            String apellido = request.queryParams("apellido");
+            String telefono = request.queryParams("telefono");
+
+            for (Estudiante es: listaEstudiantes) {
+                if(es.getMatricula() == Integer.parseInt(request.queryParams("matricula"))){
+                    es.setNombre(request.queryParams("nombre"));
+                    es.setApellido(request.queryParams("apellido"));
+                    es.setTelefono(request.queryParams("telefono"));
+                }
+            }
+
+            response.redirect("/");
+
+            return null;
+        },freemarkerEngine);
+
+        get("/verEstudiante/:matricula",(request,response) ->{
+            Map<String, Object> atributos = new HashMap<>();
+            atributos.put("titulo","Información del Estudiante");
+            for(Estudiante es: listaEstudiantes){
+                if(es.getMatricula() == Integer.parseInt(request.params("matricula"))){
+                    atributos.put("estudiante", es);
+                }
+            }
+            return new ModelAndView(atributos,"infoEstudiante.ftl");
         },freemarkerEngine);
     }
 }
