@@ -96,7 +96,7 @@ public class Main {
 
         get("/borrarEstudiante/:matricula",(request,response) ->{
             Map<String,Object> atributos = new HashMap<>();
-            atributos.put("titulo","Elimnar Estudiante");
+            atributos.put("titulo","Eliminar Estudiante");
             for(Estudiante es: listaEstudiantes){
                 if(es.getMatricula() == Integer.parseInt(request.params("matricula"))){
                     atributos.put("estudiante", es);
@@ -105,13 +105,14 @@ public class Main {
             return new ModelAndView(atributos,"eliminar.ftl");
         },freemarkerEngine);
 
-        post("/eliminarEstudiante/:matricula", (request,response) ->{
-            System.out.println(request.queryParams("matricula"));
-            /*for(Estudiante es: listaEstudiantes){
-                if(es.getMatricula() == matricula){
-                    listaEstudiantes.remove(es);
+        post("/remover", (request,response) ->{
+            Estudiante instancia = null;
+            for(Estudiante es: listaEstudiantes){
+                if(es.getMatricula() == Integer.parseInt(request.queryParams("matricula"))){
+                    instancia = es;
                 }
-            }*/
+            }
+            listaEstudiantes.remove(instancia);
                 response.redirect("/");
             return null;
         },freemarkerEngine);
