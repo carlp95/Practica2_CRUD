@@ -26,13 +26,16 @@ public class Main {
 
         get("/",(request, response) -> {
            Map<String, Object> atributos = new HashMap<>();
+            atributos.put("titulo","Información Genneral");
             atributos.put("estudiantes", listaEstudiantes);
 
            return new ModelAndView(atributos,"home.ftl");
         },freemarkerEngine);
 
         get("/agregarEstudiante",(request,response)->{
-            return new ModelAndView(null,"agregarEst.ftl");
+            Map<String, Object> atributos = new HashMap<>();
+            atributos.put("titulo","Agregar Estudiante");
+            return new ModelAndView(atributos,"agregarEst.ftl");
         },freemarkerEngine);
 
         post("/guardar",(request, response) -> {
@@ -40,12 +43,12 @@ public class Main {
             String nombre = request.queryParams("nombre");
             String apellido = request.queryParams("apellido");
             String telefono = request.queryParams("telefono");
-            Map<String, Object> atributos = new HashMap<>();
+            //Map<String, Object> atributos = new HashMap<>();
             listaEstudiantes.add(new Estudiente(matricula,nombre,apellido,telefono));
-            atributos.put("estudiantes",listaEstudiantes);
+            //atributos.put("estudiantes",listaEstudiantes);
             response.redirect("/");
 
-            return new ModelAndView(null, "home.ftl");
+            return null;
         },freemarkerEngine);
     }
 }

@@ -1,9 +1,10 @@
 </<!doctype html>
 <html lang="en">
 <head>
-    <link  href="https://bootswatch.com/4/darkly/bootstrap.css" rel="stylesheet"/>
+    <!--<link  href="https://bootswatch.com/4/darkly/bootstrap.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Agregar Estudiante</title>
+    <title>Agregar Estudiante</title>-->
+    <#include "/general.html">
 </head>
 <body>
     <div class="container" align="center">
@@ -14,7 +15,7 @@
                     <form action="guardar" method="post">
                         <div class="form-group">
                             <label for="matricula">Matrícula</label>
-                            <input class="form-control" name="matricula" placeholder="20130000" type="text">
+                            <input class="form-control" name="matricula" placeholder="20130000" type="text" maxlength="8">
                         </div>
                         <div class="form-group row">
                             <div class="col-md-6">
