@@ -20,7 +20,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th colspan="4" style="text-align: center"><h2>Listado de Estudiantes</h2></th>
+                        <th colspan="5" style="text-align: center"><h2>Listado de Estudiantes</h2></th>
                     </tr>
                     <tr>
                         <th style="text-align: center">Matrícula</th>
@@ -38,12 +38,8 @@
                             <td style="text-align: center">${estu.apellido}</td>
                             <td style="text-align: center">${estu.telefono}</td>
                             <td style="text-align: center">
-                                <div class="col-sm-3">
                                     <a href="/editarEstudiante/${estu.matricula?string["0"]}"><button type="button" class="btn btn-primary" title="Actualizar Estudiante"><i class="fa fa-refresh"></i></button></a>
-                                </div>
-                                <div class="col-sm-2">
                                     <a href="/borrarEstudiante/${estu.matricula?string["0"]}"><button type="button" class="btn btn-primary" title="Eliminar Estudiante"><i class="fa fa-trash"></i></button></a>
-                                </div>
                             </td>
                         </tr>
                     </#list>
