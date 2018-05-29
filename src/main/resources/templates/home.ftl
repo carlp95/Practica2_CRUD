@@ -14,11 +14,14 @@
             <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-plus"> <strong>Crear Estudiante</strong></i></button></a>
         </div>
     </#if>
-    <div class="container">
+    <div class="container" align="center">
     <#if (estudiantes?size > 0)>
         <div class="row">
             <table class="table table-hover">
                 <thead>
+                    <tr>
+                        <th colspan="4" style="text-align: center"><h2>Listado de Estudiantes</h2></th>
+                    </tr>
                     <tr>
                         <th>Matrícula</th>
                         <th>Nombre</th>
@@ -37,11 +40,22 @@
                     </#list>
                 </tbody>
             </table>
-            <div class="row" >
+
+        </div>
+        <div class="row" >
+            <div class="col-md-3">
                 <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-plus"> <strong>Crear Estudiante</strong></i></button></a>
             </div>
+            <div class="col-md-3">
+                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-edit"> <strong>Editar Estudiante</strong></i></button></a>
+            </div>
+            <div class="col-md-3">
+                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-undo"> <strong>Actualizar Estudiante</strong></i></button></a>
+            </div>
+            <div class="col-md-3">
+                <a href="/agregarEstudiante"><button type="button" class="btn btn-primary" ><i class="fa fa-trash"> <strong>Eliminar Estudiante</strong></i></button></a>
+            </div>
         </div>
-
     </#if>
 
     </div>
