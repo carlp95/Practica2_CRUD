@@ -1,17 +1,17 @@
 package clases;
 
-public class Estudiente {
+public class Estudiante {
 
     private int matricula;
     private String nombre;
     private String apellido;
     private String telefono;
 
-    public Estudiente(){
+    public Estudiante(){
 
     }
 
-    public Estudiente(int matricula, String nombre, String apellido, String telefono) {
+    public Estudiante(int matricula, String nombre, String apellido, String telefono) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;

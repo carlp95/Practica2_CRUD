@@ -33,7 +33,7 @@
                 <tbody>
                     <#list estudiantes as estu>
                         <tr>
-                            <td style="text-align: center"><a href="/verEstudiante/${estu.matricula?string["0"]}">${estu.matricula?string["0"]}</a></td>
+                            <td style="text-align: center"><a href="/verEstudiante/${estu.matricula?string["0"]}" title="Ver Información de Estudiante">${estu.matricula?string["0"]}</a></td>
                             <td style="text-align: center">${estu.nombre}</td>
                             <td style="text-align: center">${estu.apellido}</td>
                             <td style="text-align: center">${estu.telefono}</td>

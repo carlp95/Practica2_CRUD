@@ -26,7 +26,7 @@ public class Main {
 
         get("/",(request, response) -> {
            Map<String, Object> atributos = new HashMap<>();
-            atributos.put("titulo","Información Genneral");
+            atributos.put("titulo","Información General");
             atributos.put("estudiantes", listaEstudiantes);
 
            return new ModelAndView(atributos,"home.ftl");
@@ -92,6 +92,28 @@ public class Main {
                 }
             }
             return new ModelAndView(atributos,"infoEstudiante.ftl");
+        },freemarkerEngine);
+
+        get("/borrarEstudiante/:matricula",(request,response) ->{
+            Map<String,Object> atributos = new HashMap<>();
+            atributos.put("titulo","Elimnar Estudiante");
+            for(Estudiante es: listaEstudiantes){
+                if(es.getMatricula() == Integer.parseInt(request.params("matricula"))){
+                    atributos.put("estudiante", es);
+                }
+            }
+            return new ModelAndView(atributos,"eliminar.ftl");
+        },freemarkerEngine);
+
+        post("/eliminarEstudiante/:matricula", (request,response) ->{
+            System.out.println(request.queryParams("matricula"));
+            /*for(Estudiante es: listaEstudiantes){
+                if(es.getMatricula() == matricula){
+                    listaEstudiantes.remove(es);
+                }
+            }*/
+                response.redirect("/");
+            return null;
         },freemarkerEngine);
     }
 }
